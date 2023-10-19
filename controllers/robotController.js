@@ -3,7 +3,8 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const ros = new ROSLIB.Ros({
-  url: "ws://localhost:9090", // Replace with your ROSBridge URL.
+  // ENV variable of ROS_URL is set in .env file
+  url: process.env.ROS_URL ,
 });
 
 const sendRobotControlCommand = async (req, res) => {
