@@ -3,8 +3,13 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const ros = new ROSLIB.Ros({
-  // ENV variable of ROS_URL is set in .env file
-  url: process.env.ROS_URL ,
+  url: process.env.ROSBridge_URL,
+});
+
+const coordinateTopic = new ROSLIB.Topic({
+  ros,
+  name: "/robot_coordinates",
+  messageType: "geometry_msgs/Pose2D",
 });
 
 const sendRobotControlCommand = async (req, res) => {
@@ -17,12 +22,6 @@ const sendRobotControlCommand = async (req, res) => {
       });
 
       if (targetTable) {
-        const coordinateTopic = new ROSLIB.Topic({
-          ros,
-          name: "/robot_coordinates",
-          messageType: "geometry_msgs/Pose2D",
-        });
-
         const coordinateMessage = new ROSLIB.Message({
           x: targetTable.ros_x_position,
           y: targetTable.ros_y_position,
