@@ -1,19 +1,22 @@
 const express = require("express");
+const app = express();
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const tableRoutes = require("./routes/tableRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const robotRoutes = require("./routes/robotRoutes");
 
-const app = express();
-const port = process.env.PORT || 3000;
-
+// Middleware
+app.use(cors());
 app.use(bodyParser.json());
 
-// Use your routes
-app.use("/api", tableRoutes);
-app.use("/api", orderRoutes);
-app.use("/api", robotRoutes);
+// Routes
+app.use("/tables", tableRoutes);
+app.use("/orders", orderRoutes);
+app.use("/robot-control", robotRoutes);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+// Error handling middleware
+
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
 });
