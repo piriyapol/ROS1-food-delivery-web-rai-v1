@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Define your data model
+model TableInformation {
+  table_id         Int     @id @default(autoincrement())
+  table_number     String // Replace with the data type you are using
+  ros_x_position   Float // Adjust data type as needed
+  ros_y_position   Float // Adjust data type as needed
+  status           String // You can use an enum type for status
+  capacity         Int? // Nullable field for capacity
+  special_requests String? // Nullable field for special requests
+  Order            Order[]
+}
+
+model MenuItem {
+  item_id     Int     @id @default(autoincrement())
+  item_name   String
+  description String?
+  price       Decimal
+}
+
+model Order {
+  order_id         Int      @id @default(autoincrement())
+  table_id         Int
+  order_time       DateTime @default(now())
+  status           String // You can use an enum type for status
+  total_price      Decimal
+  special_requests String? // Nullable field for special requests
+  customer_name    String? // Nullable field for customer name
+
+  // Define the relationship between the `Order` and `TableInformation` models
+  tableInformation TableInformation @relation(fields: [table_id], references: [table_id])
+}
