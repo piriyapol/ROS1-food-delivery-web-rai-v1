@@ -11,9 +11,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Routes
-app.use("/tables", tableRoutes);
-app.use("/orders", orderRoutes);
-app.use("/robot-control", robotRoutes);
+app.use("/api/tables", tableRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/robot-control", robotRoutes);
 
 // Error handling middleware
 

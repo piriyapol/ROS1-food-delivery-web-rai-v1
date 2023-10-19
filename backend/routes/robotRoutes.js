@@ -3,7 +3,7 @@ const router = express.Router();
 const robotController = require('../controllers/robotController');
 
 // Send a robot control command to move to a table
-router.post('/robot-control', robotController.sendRobotControlCommand);
+router.post('/api/robot-control', robotController.sendRobotControlCommand);
 
 // Additional routes for robot control
 

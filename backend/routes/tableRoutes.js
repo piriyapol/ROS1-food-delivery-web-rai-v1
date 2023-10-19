@@ -3,13 +3,13 @@ const router = express.Router();
 const tableController = require("../controllers/tableController");
 
 // Retrieve a list of tables
-router.get("/tables", tableController.getTables);
+router.get("/api/tables", tableController.getTables);
 
 // Create a new table
-router.post("/tables", tableController.createTable);
+router.post("/api/tables", tableController.createTable);
 
 // Update table information
-router.put("/tables/:id", tableController.updateTable);
+router.put("/api/tables/:id", tableController.updateTable);
 
 // Additional routes for managing tables
 
