@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const tableRoutes = require("./routes/tableRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const robotRoutes = require("./routes/robotRoutes");
+const menuRoutes = require("./routes/menuRoutes");
 
 // Middleware
 app.use(cors());
@@ -13,7 +14,8 @@ app.use(bodyParser.json());
 // Routes
 app.use("/api/tables", tableRoutes);
 app.use("/api/orders", orderRoutes);
-app.use("/api/robot-control", robotRoutes);
+app.use("/api/robot", robotRoutes);
+app.use("/api/menu", menuRoutes);
 
 // Error handling middleware
 
