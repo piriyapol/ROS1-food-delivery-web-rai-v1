@@ -8,7 +8,7 @@ export const getMenuItems = async () => {
 };
 
 export const placeOrder = async (tableNumber, orderData) => {
-  const response = await axios.post(`${API_BASE_URL}/api/orders/orders`, {
+  const response = await axios.post(`${API_BASE_URL}/api/orders`, {
     tableNumber,
     orderData,
   });
@@ -16,13 +16,11 @@ export const placeOrder = async (tableNumber, orderData) => {
 };
 
 export const getKitchenOrders = async () => {
-  const response = await axios.get(`${API_BASE_URL}/api/kitchen/orders`);
+  const response = await axios.get(`${API_BASE_URL}/api/orders`);
   return response.data;
 };
 
 export const serveOrder = async (orderId) => {
-  const response = await axios.post(`${API_BASE_URL}/api/kitchen/serve`, {
-    orderId,
-  });
+  const response = await axios.put(`${API_BASE_URL}/api/orders/${orderId}/serve`);
   return response.data;
 };

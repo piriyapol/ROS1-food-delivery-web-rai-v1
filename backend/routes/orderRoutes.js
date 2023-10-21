@@ -3,11 +3,12 @@ const router = express.Router();
 const orderController = require("../controllers/orderController");
 
 // Create a new order
-router.post("/orders", orderController.createOrder);
+router.post("/", orderController.createOrder);
 
-// Update order information
-router.put("/orders/:id", orderController.updateOrder);
+// Retrieve a list of orders
+router.get("/", orderController.getOrders);
 
-// Additional routes for managing orders
+// Serve an order (update its status)
+router.put("/:order_id/serve", orderController.serveOrder);
 
 module.exports = router;
