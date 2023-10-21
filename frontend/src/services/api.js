@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:3000"; // Update with your actual API URL
+const API_BASE_URL = process.env.BACKEND_API_BASE_URL || "http://localhost:3000"; // Update the URL of your backend API if needed
 
 export const getMenuItems = async () => {
   const response = await axios.get(`${API_BASE_URL}/api/menu/menu-items`);
