@@ -212,7 +212,7 @@ function CustomerInterface() {
                         style={{ cursor: "pointer" }}
                         onClick={() => handleMenuSelection(menuItem.item_id)}
                       >
-                        {menuItem.item_name} - ${menuItem.price}
+                        {menuItem.item_name} - ฿{menuItem.price}
                       </span>
                     </ListGroup.Item>
                   ))}
@@ -228,8 +228,10 @@ function CustomerInterface() {
               <ListGroup>
                 {selectedMenuItems.map((item) => (
                   <ListGroup.Item key={item.item_id}>
-                    {item.item_name} - ${item.price} - Quantity:
+                    {item.item_name} - ฿{item.price} - Quantity:
                     <input
+                    // responsive
+                      style={{ width: "50px", margin: "0 10px" }}
                       type="number"
                       value={item.quantity}
                       onChange={(e) =>
@@ -261,7 +263,7 @@ function CustomerInterface() {
                 ))}
                 {selectedMenuItems.length > 0 && (
                   <ListGroup.Item>
-                    Total Price: ${totalOrderPrice.toFixed(2)}
+                    Total Price: ฿{totalOrderPrice.toFixed(2)}
                   </ListGroup.Item>
                 )}
               </ListGroup>
