@@ -38,6 +38,7 @@ const logTableId = async (tableNumber) => {
   }
 };
 
+
 // Create a new order
 const createOrder = async (req, res) => {
   const { tableNumber, orderData } = req.body;
@@ -59,17 +60,20 @@ const createOrder = async (req, res) => {
         table_id: tableInfo.table_id,
         status: orderData.status,
         total_price: orderData.total_price,
-        special_requests: orderData.special_requests,
-        customer_name: orderData.customer_name,
+        special_requests: orderData.specialRequests, // Save special requests
+        customer_name: orderData.customerName, // Save customer name
         OrderItem: {
-          // Use "OrderItem" instead of "order_items"
-          create: orderData.order_items,
+          create: orderData.orderItems.map((item) => ({
+            menu_item: {
+              connect: { item_id: item.item_id },
+            },
+            quantity: item.quantity,
+          })),
         },
       },
       include: {
         tableInformation: true,
         OrderItem: {
-          // Use "OrderItem" instead of "order_items"
           include: {
             menu_item: true,
           },
