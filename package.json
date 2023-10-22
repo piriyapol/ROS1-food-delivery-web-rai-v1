@@ -7,8 +7,10 @@
     "start-backend": "cd backend && npm start",
     "start-frontend": "cd frontend && npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install-all": "npm-run-all --parallel install-backend install-frontend",
+    "install-all": "npm-run-all --parallel install-backend prisma-generate install-frontend",
     "install-backend": "cd backend && npm install",
+    "prisma-generate": "cd backend && npx prisma generate",
+    "prisma-migrate": "cd backend && npx prisma migrate dev --name init",
     "install-frontend": "cd frontend && npm install"
   },
   "repository": {
