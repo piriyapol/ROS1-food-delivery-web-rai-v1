@@ -249,8 +249,9 @@ function AdminInterface() {
 
   return (
     <div>
-      <Tabs defaultActiveKey="orders" id="admin-tabs">
-        <Tab eventKey="orders" title="Orders">
+      {/* <Tabs defaultActiveKey="orders" id="admin-tabs"> */}
+      <Tabs defaultActiveKey="menu" id="admin-tabs">
+        {/* <Tab eventKey="orders" title="Orders">
           <Card>
             <Card.Body>
               <Table striped bordered hover>
@@ -305,7 +306,7 @@ function AdminInterface() {
               </Table>
             </Card.Body>
           </Card>
-        </Tab>
+        </Tab> */}
         <Tab eventKey="menu" title="Menu">
           <Card>
             <Card.Body>
@@ -917,29 +918,30 @@ function AdminInterface() {
             </Form.Group>
           </Form>
           <h3>Menu Items:</h3>
-          {selectedOrder.orderItems.map((item) => (
-            <div key={item.item_id}>
-              <label>
-                {getMenuItemName(item.item_id)} - ฿
-                {getMenuItemPrice(item.item_id).toFixed(2)}
-              </label>
-              <input
-                type="number"
-                min="0"
-                value={item.quantity}
-                onChange={(e) => {
-                  const quantity = parseInt(e.target.value);
-                  const orderItems = selectedOrder.orderItems.map((i) => {
-                    if (i.item_id === item.item_id) {
-                      i.quantity = quantity;
-                    }
-                    return i;
-                  });
-                  setSelectedOrder({ ...selectedOrder, orderItems });
-                }}
-              />
-            </div>
-          ))}
+          {selectedOrder.orderItems &&
+            selectedOrder.orderItems.map((item) => (
+              <div key={item.item_id}>
+                <label>
+                  {getMenuItemName(item.item_id)} - ฿
+                  {getMenuItemPrice(item.item_id).toFixed(2)}
+                </label>
+                <input
+                  type="number"
+                  min="0"
+                  value={item.quantity}
+                  onChange={(e) => {
+                    const quantity = parseInt(e.target.value);
+                    const orderItems = selectedOrder.orderItems.map((i) => {
+                      if (i.item_id === item.item_id) {
+                        i.quantity = quantity;
+                      }
+                      return i;
+                    });
+                    setSelectedOrder({ ...selectedOrder, orderItems });
+                  }}
+                />
+              </div>
+            ))}
         </Modal.Body>
         <Modal.Footer>
           <Button
