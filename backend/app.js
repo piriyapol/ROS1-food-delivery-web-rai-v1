@@ -6,6 +6,7 @@ const tableRoutes = require("./routes/tableRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const robotRoutes = require("./routes/robotRoutes");
 const menuRoutes = require("./routes/menuRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 // Middleware
 app.use(cors());
@@ -16,6 +17,7 @@ app.use("/api/tables", tableRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/robot", robotRoutes);
 app.use("/api/menu", menuRoutes);
+app.use("/api/admin", adminRoutes);
 
 // Error handling middleware
 
