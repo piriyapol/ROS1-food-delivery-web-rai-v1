@@ -124,11 +124,11 @@ function AdminInterface() {
     });
   };
 
-  const handleDeleteOrder = (order) => {
-    deleteOrderByAdmin(order.order_id).then(() => {
-      fetchOrders();
-    });
-  };
+  // const handleDeleteOrder = (order) => {
+  //   deleteOrderByAdmin(order.order_id).then(() => {
+  //     fetchOrders();
+  //   });
+  // };
 
   const handleEditMenu = (menuItem) => {
     setSelectedMenuItem(menuItem);
@@ -167,67 +167,97 @@ function AdminInterface() {
   };
 
   const handleUpdateTable = () => {
-    updateTableByAdmin(selectedTable.table_id, selectedTable).then(() => {
+    updateTableByAdmin(selectedTable.table_number, selectedTable).then(() => {
       fetchTables();
       setShowEditTableModal(false);
     });
   };
 
-  const handleCreateTable = () => {
-    setNewTable({ table_number: "", ros_x_position: "", ros_y_position: "", status: "", capacity: 0, special_requests: "" });
-    setShowCreateTableModal(true);
-  };
+const handleCreateTable = () => {
+  setNewTable({
+    table_number: "",
+    ros_x_position: 0.00, // Make sure ros_x_position is properly set, e.g., to 0
+    ros_y_position: 0.00, // Make sure ros_y_position is properly set, e.g., to 0
+    status: "",
+    capacity: 0, // Make sure capacity is properly set, e.g., to 0
+    special_requests: "",
+  });
+  setShowCreateTableModal(true);
+};
 
-  const handleCreateNewTable = () => {
-    createTableByAdmin(newTable).then(() => {
-      fetchTables();
-      setShowCreateTableModal(false);
-    });
-  };
 
-  const handleDeleteTable = () => {
-    if (deletingTable) {
-      deleteTableByAdmin(deletingTable.table_id).then(() => {
+const handleCreateNewTable = () => {
+  if (
+    newTable.table_number &&
+    newTable.ros_x_position !== undefined &&
+    newTable.ros_y_position !== undefined &&
+    newTable.status &&
+    newTable.capacity !== undefined &&
+    newTable.special_requests
+  ) {
+    createTableByAdmin(newTable)
+      .then(() => {
         fetchTables();
-        setDeletingTable(null);
+        setShowCreateTableModal(false);
+      })
+      .catch((error) => {
+        // Handle any API call errors here
+        console.error("Error creating table:", error);
       });
-    }
-  };
+  } else {
+    // Handle validation errors, e.g., show an alert or error message
+    console.error("Validation error: All fields must be filled");
+  }
+};
 
-  const handleAddMenuItem = (menuItem) => {
-    const orderItems = [...selectedOrder.orderItems];
-    const existingItemIndex = orderItems.findIndex(
-      (item) => item.item_id === menuItem.item_id
-    );
 
-    if (existingItemIndex !== -1) {
-      orderItems[existingItemIndex].quantity++;
-    } else {
-      orderItems.push({
-        item_id: menuItem.item_id,
-        item_name: menuItem.item_name,
-        description: menuItem.description,
-        price: menuItem.price,
-        quantity: 1,
-      });
-    }
-
-    setSelectedOrder({
-      ...selectedOrder,
-      orderItems,
+const handleDeleteTable = (table) => {
+  if (table && table.table_number) {
+    deleteTableByAdmin(table.table_number).then(() => {
+      fetchTables();
+      // You can clear the selectedTable or hide the modal here if necessary.
     });
-  };
+  } else {
+    // Handle the case when the table or table number is missing.
+    console.error("Invalid table data");
+  }
+};
 
-  const handleRemoveMenuItem = (itemId) => {
-    const orderItems = selectedOrder.orderItems.filter(
-      (item) => item.item_id !== itemId
-    );
 
-    setSelectedOrder({
-      ...selectedOrder,
-      orderItems,
-    });
-  };
+  // const handleAddMenuItem = (menuItem) => {
+  //   const orderItems = [...selectedOrder.orderItems];
+  //   const existingItemIndex = orderItems.findIndex(
+  //     (item) => item.item_id === menuItem.item_id
+  //   );
+
+  //   if (existingItemIndex !== -1) {
+  //     orderItems[existingItemIndex].quantity++;
+  //   } else {
+  //     orderItems.push({
+  //       item_id: menuItem.item_id,
+  //       item_name: menuItem.item_name,
+  //       description: menuItem.description,
+  //       price: menuItem.price,
+  //       quantity: 1,
+  //     });
+  //   }
+
+  //   setSelectedOrder({
+  //     ...selectedOrder,
+  //     orderItems,
+  //   });
+  // };
+
+  // const handleRemoveMenuItem = (itemId) => {
+  //   const orderItems = selectedOrder.orderItems.filter(
+  //     (item) => item.item_id !== itemId
+  //   );
+
+  //   setSelectedOrder({
+  //     ...selectedOrder,
+  //     orderItems,
+  //   });
+  // };
 
   const getMenuItemName = (itemId) => {
     const menuItem = menuItems.find((item) => item.item_id === itemId);
@@ -239,13 +269,13 @@ function AdminInterface() {
     return menuItem ? menuItem.price : 0;
   };
 
-  const calculateTotalPrice = (orderItems) => {
-    let total = 0;
-    for (const item of orderItems) {
-      total += item.price * item.quantity;
-    }
-    return parseFloat(total);
-  };
+  // const calculateTotalPrice = (orderItems) => {
+  //   let total = 0;
+  //   for (const item of orderItems) {
+  //     total += item.price * item.quantity;
+  //   }
+  //   return parseFloat(total);
+  // };
 
   return (
     <div>
@@ -391,7 +421,7 @@ function AdminInterface() {
                         </Button>
                         <Button
                           variant="danger"
-                          onClick={() => setDeletingTable(table)}
+                          onClick={() => handleDeleteTable(table)}
                         >
                           Delete
                         </Button>

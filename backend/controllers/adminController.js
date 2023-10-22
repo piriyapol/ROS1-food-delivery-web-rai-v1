@@ -132,16 +132,22 @@ const updateTableInformation = async (req, res) => {
   const { table_number } = req.params;
   const updatedTableInfo = req.body;
 
-  try {
-    await prisma.tableInformation.update({
+  try { //Update table information where table_number = tableNumber
+    const tableInfo = await prisma.tableInformation.update({
       where: {
         table_number: table_number,
       },
-      data: updatedTableInfo,
+      data: {
+        ros_x_position: parseFloat(updatedTableInfo.ros_x_position),
+        ros_y_position: parseFloat(updatedTableInfo.ros_y_position),
+        status: updatedTableInfo.status,
+        capacity: parseInt(updatedTableInfo.capacity),
+        special_requests: updatedTableInfo.special_requests,
+      },
     });
 
-    res.status(204).send();
-  } catch (error) {
+    res.status(200).json(tableInfo);
+  } catch (error) { //Error updating table information
     console.error("Error updating table information:", error);
     res
       .status(500)
@@ -155,7 +161,7 @@ const deleteTableInformation = async (req, res) => {
 
   try {
     // Delete all records with the provided table_number
-    await prisma.tableInformation.deleteMany({
+    await prisma.tableInformation.delete({
       where: {
         table_number: table_number,
       },
@@ -166,7 +172,7 @@ const deleteTableInformation = async (req, res) => {
     console.error("Error deleting table information:", error);
     res
       .status(500)
-      .json({ error: "Internal server error (Delete Table Information)"},{ error: error });
+      .json({ error: "Internal server error (Delete Table Information)"});
   }
 };
 

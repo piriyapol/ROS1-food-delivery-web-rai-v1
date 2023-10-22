@@ -30,14 +30,14 @@ export const getTables = async () => {
   return response.data;
 };
 
-export const createTableByAdmin = async (tableNumber,tableInformation) => {
+export const createTableByAdmin = async (tableData) => {
   const response = await axios.post(`${API_BASE_URL}/api/admin/table/create`, {
-    tableNumber,
-    ros_x_position : tableInformation.ros_x_position,
-    ros_y_position : tableInformation.ros_y_position,
-    status : tableInformation.status,
-    capacity : tableInformation.capacity,
-    specialRequests : tableInformation.specialRequests,
+    tableNumber: tableData.table_number,
+    ros_x_position: tableData.ros_x_position,
+    ros_y_position: tableData.ros_y_position,
+    status: tableData.status,
+    capacity: tableData.capacity,
+    specialRequests: tableData.specialRequests,
   });
   return response.data;
 };
