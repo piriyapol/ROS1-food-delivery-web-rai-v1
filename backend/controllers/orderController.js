@@ -1,5 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+const {sendRobotControlCommand } = require("./robotController");
 
 // Separate function to find table information
 const findTableInformation = async (tableNumber, prisma) => {
@@ -131,6 +132,21 @@ const serveOrder = async (req, res) => {
       },
     });
 
+    // After serving the order, send a robot control command to move to the table
+    const table_id = order.tableInformation.table_id; // Assuming you have a table ID in the order
+    console.log("Table ID:", table_id);
+    console.log("Sending robot control command to move to table...");
+    console.log({ action: "move", table_id });
+    // res.status(200).json(order);
+    await sendRobotControlCommand({ "action":"move", table_id });
+    //log response
+    console.log("Robot control command sent.");
+
+    // You may add a delay here to allow the robot to reach the table before returning
+
+    // Send a robot control command to return after serving the order
+    // await sendRobotControlCommand({ action: "return" });
+    //log response
     res.status(200).json(order);
   } catch (error) {
     console.error("Error serving order:", error); // Log the error
