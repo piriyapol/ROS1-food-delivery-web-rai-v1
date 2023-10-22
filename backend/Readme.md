@@ -45,7 +45,7 @@ Before you get started, ensure you have the following prerequisites:
 2. Navigate to the project directory:
 
    ```bash
-   cd ROS1-food-delivery-web-rai-v1
+   cd ROS1-food-delivery-web-rai-v1/backend
    ```
 
 3. Install dependencies:
