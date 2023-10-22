@@ -143,12 +143,6 @@ You can install both backend and frontend at the same time or install them separ
      npm install -g prisma
      ```
 
-   - Initialize Prisma:
-
-     ```bash
-     npx prisma init
-     ```
-
    - Generate Prisma Client:
 
      ```bash
