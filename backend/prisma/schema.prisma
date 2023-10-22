@@ -13,7 +13,7 @@ datasource db {
 // Define your data model
 model TableInformation {
   table_id         Int     @id @default(autoincrement())
-  table_number     String // Replace with the data type you are using
+  table_number     String  @unique // Replace with the data type you are using
   ros_x_position   Float // Adjust data type as needed
   ros_y_position   Float // Adjust data type as needed
   status           String // You can use an enum type for status
