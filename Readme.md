@@ -70,19 +70,9 @@ The project is organized with a typical Express.js backend and a React-based fro
 ## Installation
 
 You'll need to install and configure both the backend and frontend to run the project successfully.
+You can install both backend and frontend at the same time or install them separately.
 
-### Prerequisites
-
-#### Runtime
-
-- Node.js v18.0.0 or higher
-- npm v7.0.0 or higher
-
-### Database Engine
-<!-- Database -->
-- PostgreSQL
-
-### Auto Installations
+### Auto Installations (Backend and Frontend)
 
 0. Clone this repository:
 
