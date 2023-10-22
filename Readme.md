@@ -124,7 +124,7 @@ You can install both backend and frontend at the same time or install them separ
 2. Navigate to the project directory:
 
    ```bash
-   cd ROS1-food-delivery-web-rai-v1
+   cd backend
    ```
 
 3. Install backend dependencies:
