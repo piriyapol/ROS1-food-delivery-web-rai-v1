@@ -210,23 +210,33 @@ The backend server will be available at `http://localhost:3000`, and the fronten
 
 The project offers several endpoints for managing tables, orders, and robot control.
 
+ Table endpoints:
+
 - `/api/tables`: [GET] Retrieve a list of tables.
-- `/api//tables`: [POST] Create a new table.
-  <br>
+- `/api/tables`: [POST] Create a new table.
+
+Menu endpoints:
+
 - `/api/menu`: [GET] Retrieve a list of menu items.
 - `/api/menu`: [POST] Create a new menu item.
 - `/api/menu/:id`: [PUT] Update a menu item.
 - `/api/menu/:id`: [DELETE] Delete a menu item.
-  <br>
+
+Order endpoints:
+
 - `/api/orders`: [POST] Create a new order.
 - `/api/orders/:id`: [PUT] Update an order.
 - `/api/orders/:id`: [DELETE] Delete an order.
-  <br>
+
+Admin endpoints:
+
 - `/api/admin/orders`: [GET] Retrieve a list of orders.
 - `/api/admin/orders/:id`: [GET] Retrieve an order by ID.
 - `/api/admin/orders/:id`: [PUT] Update an order by ID.
 - `/api/admin/orders/:id`: [DELETE] Delete an order by ID.
-  <br>
+
+Robot control endpoint:
+
 - `/api/robot-control`: [POST] Send robot control commands.
 
 For a complete list of endpoints and request/response examples, please refer to the API documentation.
