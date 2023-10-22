@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# ROS1 Food Delivery Web RAI Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the frontend part of the ROS1 Food Delivery Web RAI project. This directory contains the client-side code for the web application.
 
-## Available Scripts
+## Project Structure
 
-In the project directory, you can run:
+The project is organized as follows:
 
-### `npm start`
+- `public`: Static assets and public files.
+  - `favicon.ico`: Website favicon.
+  - `index.html`: The main HTML file for the application.
+  - `logo192.png`: An image used for various purposes.
+  - `logo512.png`: A larger version of the logo image.
+  - `manifest.json`: Web app manifest for progressive web app features.
+  - `robots.txt`: Robots exclusion standard file for web crawlers.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `src`: Source code for the frontend application.
+  - `components`: Reusable React components.
+    - `AdminInterface.js`: Component for the admin interface.
+    - `CustomerInterface.js`: Component for the customer interface.
+    - `KitchenInterface.js`: Component for the kitchen interface.
+  - `pages`: Application pages and main components.
+    - `AdminPage.js`: Page for the admin interface.
+    - `CustomerPage.js`: Page for the customer interface.
+    - `KitchenPage.js`: Page for the kitchen interface.
+  - `services`: Client-side services for handling API requests.
+    - `api.js`: Service for making API requests.
+  - `App.css`: Styles specific to the App component.
+  - `App.js`: The root component of the application.
+  - `App.test.js`: Test file for the App component.
+  - `index.css`: Global styles.
+  - `index.js`: Entry point for the application.
+  - `logo.svg`: SVG logo file.
+  - `reportWebVitals.js`: Web Vitals reporting.
+  - `setupTests.js`: Configuration for testing.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- `.gitignore`: Specifies files and directories to be ignored by Git.
 
-### `npm test`
+- `README.md`: This file, providing an overview of the frontend directory.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `package-lock.json` and `package.json`: Node.js and npm package files.
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Before running the frontend application, ensure that you have installed the required dependencies by running:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Once the dependencies are installed, you can start the development server:
 
-### `npm run eject`
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This will start the development server and open the web application in your default web browser.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Development
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Add your components, pages, and styles within the `src` directory.
+- Make API requests and integrate with the backend as needed.
+- Configure routes and navigation in `src/App.js`.
+- Create unit tests for your components and services.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Deployment
 
-## Learn More
+When you are ready to deploy the frontend, build the production-ready version of the application with:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm run build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The optimized build will be created in the `build` directory, which you can then serve using a web server or deploy to a hosting platform.
 
-### Code Splitting
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Feel free to contribute to this project by opening issues and pull requests. We welcome your ideas and improvements.
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This project is licensed under the [MIT License](LICENSE).
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
