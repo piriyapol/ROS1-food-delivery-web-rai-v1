@@ -16,7 +16,7 @@ const KitchenPage = () => {
 
   return (
     <div>
-      <h1>Kitchen Page</h1>
+      {/* <h1>Kitchen Page</h1> */}
       <KitchenInterface orders={orders} onServeOrder={serveOrder} />
     </div>
   );

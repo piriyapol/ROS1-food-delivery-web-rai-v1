@@ -11,7 +11,7 @@ const CustomerPage = () => {
 
   return (
     <div>
-      <h1>Customer Page</h1>
+      {/* <h1>Customer Page</h1> */}
       <CustomerInterface menuItems={menuItems} onOrderSubmit={placeOrder} />
     </div>
   );
